@@ -12,6 +12,10 @@ path = "./src/bin/main.rs"
 name = "switch"
 path = "./src/bin/switch.rs"
 
+[[bin]]
+name = "uart"
+path = "./src/bin/uart.rs"
+
 [dependencies]
 esp-hal = { version = "~1.1.0", features = ["defmt", "esp32c6", "unstable"] }
 
@@ -22,7 +26,9 @@ esp-bootloader-esp-idf = { version = "0.5.0", features = ["defmt", "esp32c6"] }
 critical-section = "1.2.0"
 panic-rtt-target = { version = "0.2.0", features = ["defmt"] }
 rtt-target       = { version = "0.6.2", features = ["defmt"] }
-
+embassy-executor = "0.10.0"
+embedded-io-async = "0.7.0"
+esp-rtos = { version = "0.3.0", features = ["embassy", "esp32c6"] }
 
 # For fine tuning these settings, please refer to https://doc.rust-lang.org/cargo/reference/profiles.html
 [profile.dev]
