@@ -5,7 +5,7 @@ rust-version = "1.88"
 version      = "0.1.0"
 
 [[bin]]
-name = "esp32c6-demos"
+name = "led"
 path = "./src/bin/main.rs"
 
 [[bin]]
@@ -15,6 +15,14 @@ path = "./src/bin/switch.rs"
 [[bin]]
 name = "uart"
 path = "./src/bin/uart.rs"
+
+[[bin]]
+name = "adc"
+path = "./src/bin/adc.rs"
+
+[[bin]]
+name = "pwm"
+path = "./src/bin/pwm.rs"
 
 [dependencies]
 esp-hal = { version = "~1.1.0", features = ["defmt", "esp32c6", "unstable"] }
@@ -29,6 +37,7 @@ rtt-target       = { version = "0.6.2", features = ["defmt"] }
 embassy-executor = "0.10.0"
 embedded-io-async = "0.7.0"
 esp-rtos = { version = "0.3.0", features = ["embassy", "esp32c6"] }
+nb = "1.1.0"
 
 # For fine tuning these settings, please refer to https://doc.rust-lang.org/cargo/reference/profiles.html
 [profile.dev]
