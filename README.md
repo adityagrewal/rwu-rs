@@ -91,7 +91,7 @@ here with a real one.
 
 ```bash
 cargo install esp-generate --locked
-cargo install espflash --locked
+cargo install probe-rs-tools --locked
 esp-generate --chip esp32c6 esp32c6-demos   # generates Cargo.toml, .cargo/config.toml, linker setup
 cd esp32c6-demos
 cargo run --release --bin led
@@ -101,17 +101,15 @@ cargo run --release --bin led
 
 ### Raspberry Pi Pico 2 W
 
-No scaffolding tool exists for embassy-rp, so the project skeleton has to be assembled by hand
-before the first build:
+We can reference embassy-rs/examples/embassy-rp235x,for some support as a first step:
 
 ```bash
 rustup target add thumbv8m.main-none-eabihf
 cargo install probe-rs-tools --locked
 cargo install flip-link
 
-cargo new --bin rp2350-demos && cd rp2350-demos
-# add the dependencies, .cargo/config.toml, memory.x, and build.rs from rp2350/ in this repo
-cargo run --release --bin led
+# add the dependencies, .cargo/config.toml, memory.x, few sources and build.rs from embassy-rs/examples/rp235x/ in this repo
+cargo run --release --bin blinky_wifi.rs
 ```
 
 ### LPC845-BRK Rev A
