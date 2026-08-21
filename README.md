@@ -6,8 +6,8 @@ Project for the lecture **Embedded Control** (Prof. Dr. Lothar Berger, winter se
 Hochschule Ravensburg-Weingarten.
 
 This repository evaluates how good Rust's support for microcontroller development actually is
-in practice, by implementing the same six peripheral demos — **LED, switch, UART, ADC, DAC,
-PWM** — on three boards with very different levels of Rust ecosystem maturity, then comparing
+in practice, by implementing the same six peripheral demos, **LED, switch, UART, ADC, DAC,
+PWM**, on three boards with very different levels of Rust ecosystem maturity, then comparing
 the experience across them.
 
 The full write-up, including the reasoning behind every board- and pin-level decision, is in
@@ -21,7 +21,7 @@ The full write-up, including the reasoning behind every board- and pin-level dec
 | Raspberry Pi Pico 2 W | RP2350 | Arm Cortex-M33 | [`embassy-rp`](https://github.com/embassy-rs/embassy) (`no_std`, async) |
 | LPC845-BRK Rev A | LPC845 | Arm Cortex-M0+ | [`lpc8xx-hal`](https://github.com/lpc-rs/lpc8xx-hal) / [`lpc845-pac`](https://crates.io/crates/lpc845-pac) |
 
-Each board has one architecture and one framework — there was no choice to make there. What
+Each board has one architecture and one framework, there was no choice to make there. What
 varies is how mature and complete that framework is for the six peripherals under test; see the
 report's comparison table for the full breakdown.
 
@@ -71,7 +71,7 @@ report's comparison table for the full breakdown.
 ```
 
 Each board directory is an independent crate with its own target and toolchain, rather than a
-shared Cargo workspace — see the report for why.
+shared Cargo workspace, see the report for why.
 
 ## Demo status
 
@@ -81,7 +81,7 @@ shared Cargo workspace — see the report for why.
 | RP2350 (Pico 2 W) | ✅ | ✅ | ✅ | ✅ | ⚠️ workaround | ✅ |
 | LPC845-BRK Rev A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-Neither RISC-V board has an on-chip DAC — both DAC entries are a PWM output through an external
+Neither RISC-V board has an on-chip DAC, both DAC entries are a PWM output through an external
 RC low-pass filter rather than a true DAC peripheral. The LPC845 is, ironically, the only board
 here with a real one.
 
@@ -129,8 +129,8 @@ cargo embed --release --example led --features 845-rt
 
 ## Key findings
 
-- ESP32-C6 and RP2350 both have strong, actively maintained Rust support (5 of 6 demos apiece)
-  — but on both boards, the single easiest-sounding demo (LED) turned out to be the most
+- ESP32-C6 and RP2350 both have strong, actively maintained Rust support (5 of 6 demos apiece),
+   but on both boards, the single easiest-sounding demo (LED) turned out to be the most
   interesting one, for board-specific hardware reasons rather than Rust ones.
 - Neither RISC-V microcontroller in this survey has an on-chip DAC — a hardware limitation
   shared by both families, not a Rust ecosystem gap.
