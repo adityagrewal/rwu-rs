@@ -155,5 +155,5 @@ bibliography.
 
 ## Author
 
-Project for the Embedded Control course, RWU — see `report/` for author and matriculation
+Project for the Embedded Control course, RWU, see `report/` for author and matriculation
 details.
