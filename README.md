@@ -92,9 +92,7 @@ here with a real one.
 ```bash
 cargo install esp-generate --locked
 cargo install probe-rs-tools --locked
-esp-generate --chip esp32c6 esp32c6-demos   # generates Cargo.toml, .cargo/config.toml, linker setup
-cd esp32c6-demos
-cargo run --release --bin led
+esp-generate --chip esp32c6 esp32c6-dev-kit-nx   # generates Cargo.toml, .cargo/config.toml, linker setup
 ```
 
 `esp-generate` produces a complete, buildable project — no manual `.cargo/config.toml` needed.
@@ -107,9 +105,6 @@ We can reference embassy-rs/examples/embassy-rp235x,for some support as a first 
 rustup target add thumbv8m.main-none-eabihf
 cargo install probe-rs-tools --locked
 cargo install flip-link
-
-# add the dependencies, .cargo/config.toml, memory.x, few sources and build.rs from embassy-rs/examples/rp235x/ in this repo
-cargo run --release --bin blinky_wifi.rs
 ```
 
 ### LPC845-BRK Rev A
@@ -121,10 +116,6 @@ Same story — no template, so `.cargo/config.toml`, `memory.x`, and `Embed.toml
 rustup target add thumbv6m-none-eabi
 cargo install probe-rs-tools --locked
 rustup component add llvm-tools-preview
-
-cargo new --bin lpc845-demos && cd lpc845-demos
-# add the dependencies, .cargo/config.toml, memory.x, and Embed.toml from lpc845/ in this repo
-cargo embed --release --example led --features 845-rt
 ```
 
 ## Key findings
