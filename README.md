@@ -103,8 +103,6 @@ We can reference embassy-rs/examples/embassy-rp235x,for some support as a first 
 
 ```bash
 rustup target add thumbv8m.main-none-eabihf
-cargo install probe-rs-tools --locked
-cargo install flip-link
 ```
 
 ### LPC845-BRK Rev A
