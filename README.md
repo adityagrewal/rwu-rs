@@ -92,6 +92,7 @@ here with a real one.
 ```bash
 cargo install esp-generate --locked
 cargo install probe-rs-tools --locked
+cargo install cargo-binutils --locked # optional: cargo size / cargo objdump
 esp-generate --chip esp32c6 esp32c6-dev-kit-nx   # generates Cargo.toml, .cargo/config.toml, linker setup
 ```
 
@@ -103,6 +104,7 @@ We can reference embassy-rs/examples/embassy-rp235x,for some support as a first 
 
 ```bash
 rustup target add thumbv8m.main-none-eabihf
+cargo install cargo-binutils --locked # optional: cargo size / cargo objdump
 ```
 
 ### LPC845-BRK Rev A
@@ -113,6 +115,7 @@ Same story — no template, so `.cargo/config.toml`, `memory.x`, and `Embed.toml
 ```bash
 rustup target add thumbv6m-none-eabi
 cargo install probe-rs-tools --locked
+cargo install cargo-binutils --locked # optional: cargo size / cargo objdump
 rustup component add llvm-tools-preview
 ```
 
