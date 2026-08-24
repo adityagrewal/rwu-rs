@@ -32,7 +32,7 @@ report's comparison table for the full breakdown.
 ├── report/
 │   └── rust_mcu_survey_report.docx      # full write-up: methodology, findings, code listings
 │
-├── esp32-c6/                            # esp-hal, scaffolded with esp-generate
+├── esp32-c6-dev-kit-nx/                            # esp-hal, scaffolded with esp-generate
 │   ├── Cargo.toml
 │   ├── .cargo/config.toml
 │   └── src/bin/
@@ -43,7 +43,7 @@ report's comparison table for the full breakdown.
 │       ├── dac.rs                       # PWM + RC-filter workaround (no on-chip DAC)
 │       └── pwm.rs
 │
-├── rp2350/                              # embassy-rp
+├── rp2350a/                              # embassy-rp
 │   ├── Cargo.toml
 │   ├── .cargo/config.toml
 │   ├── memory.x
@@ -56,7 +56,7 @@ report's comparison table for the full breakdown.
 │       ├── dac.rs                       # workaround, see report §4.2
 │       └── pwm.rs
 │
-└── lpc845/                              # lpc8xx-hal + lpc845-pac
+└── lpc845-brk-rev-a/                              # lpc8xx-hal + lpc845-pac
     ├── Cargo.toml
     ├── .cargo/config.toml
     ├── memory.x
