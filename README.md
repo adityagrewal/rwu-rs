@@ -90,6 +90,7 @@ here with a real one.
 ### ESP32-C6-DevKit-NX
 
 ```bash
+rustup target add riscv32imac-unknown-none-elf
 cargo install esp-generate --locked
 cargo install probe-rs-tools --locked
 cargo install cargo-binutils --locked # optional: cargo size / cargo objdump
