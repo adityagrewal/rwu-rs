@@ -93,6 +93,7 @@ here with a real one.
 cargo install esp-generate --locked
 cargo install probe-rs-tools --locked
 cargo install cargo-binutils --locked # optional: cargo size / cargo objdump
+rustup component add llvm-tools-preview
 esp-generate --chip esp32c6 esp32c6-dev-kit-nx   # generates Cargo.toml, .cargo/config.toml, linker setup
 ```
 
@@ -104,6 +105,7 @@ We can reference embassy-rs/examples/embassy-rp235x,for some support as a first 
 
 ```bash
 rustup target add thumbv8m.main-none-eabihf
+rustup component add llvm-tools-preview
 cargo install cargo-binutils --locked # optional: cargo size / cargo objdump
 ```
 
