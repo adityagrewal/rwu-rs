@@ -25,7 +25,7 @@ async fn main(_spawner: Spawner) {
 
     let mut buf = [0u8; 1];
     loop {
-        embedded_io_async::Read::read(&mut uart, &mut buf).await.unwrap();
-        embedded_io_async::Write::write_all(&mut uart, &buf).await.unwrap();
+        Read::read(&mut uart, &mut buf).await.unwrap();
+        Write::write_all(&mut uart, &buf).await.unwrap();
     }
 }

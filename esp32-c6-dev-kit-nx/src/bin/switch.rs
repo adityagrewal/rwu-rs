@@ -1,4 +1,4 @@
-  #![no_std]
+#![no_std]
 #![no_main]
  
 use panic_rtt_target as _;
@@ -22,7 +22,6 @@ fn main() -> ! {
     loop {
         if button.is_low() {
             led.set_high();
-            // delay.delay_millis(20); // simple software debounce
         } else {
             led.set_low();
             }
