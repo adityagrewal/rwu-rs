@@ -16,3 +16,10 @@ async fn main(spawner: Spawner) {
     loop {
         info!("led on!");
         control.gpio_set(0, true).await;
+        Timer::after(delay).await;
+
+        info!("led off!");
+        control.gpio_set(0, false).await;
+        Timer::after(delay).await;
+    }
+}
