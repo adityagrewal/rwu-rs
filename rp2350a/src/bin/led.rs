@@ -29,6 +29,14 @@ bind_interrupts!(struct Irqs {
     PIO0_IRQ_0 => InterruptHandler<PIO0>;
     DMA_IRQ_0 => dma::InterruptHandler<DMA_CH0>, dma::InterruptHandler<DMA_CH1>;
 });
+
+#[embassy_executor::task]
+async fn cyw43_task(
+    runner: cyw43::Runner<'static, cyw43::SpiBus<Output<'static>, PioSpi<'static, PIO0, 0>>>,
+) -> ! {
+    runner.run().await
+}
+
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
     static STATE: StaticCell<cyw43::State> = StaticCell::new();
