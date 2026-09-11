@@ -11,6 +11,7 @@ embassy-executor = { version = "0.10.0", features = ["defmt", "platform-cortex-m
 embassy-rp       = { version = "0.10.0", features = ["defmt", "rp235xa", "binary-info", "time-driver", "critical-section-impl"] }
 embassy-time     = { version = "0.5.1", features = ["defmt"] }
 defmt            = "1.0.1"
+defmt-rtt        = "1.0.0"
 panic-probe      = { version = "1.0.0", features = ["print-defmt"] }
 cyw43            = { version = "0.7.0", features = ["defmt", "firmware-logs"] }
 cyw43-pio        = { version = "0.10.0", features = ["defmt"] }
