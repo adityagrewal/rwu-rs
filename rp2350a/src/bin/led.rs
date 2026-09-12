@@ -43,6 +43,20 @@ async fn main(spawner: Spawner) {
     let fw = aligned_bytes!("../../cyw43-firmware/43439A0.bin");
     let clm = aligned_bytes!("../../cyw43-firmware/43439A0_clm.bin");
     let nvram = aligned_bytes!("../../cyw43-firmware/nvram_rp2040.bin");
+
+    let pwr = Output::new(p.PIN_23, Level::Low);
+    let cs = Output::new(p.PIN_25, Level::High);
+    let mut pio = Pio::new(p.PIO0, Irqs);
+    let spi = PioSpi::new(
+    &mut pio.common,
+    pio.sm0,
+    RM2_CLOCK_DIVIDER,
+    pio.irq0,
+    cs,
+    p.PIN_24,
+    p.PIN_29,
+    dma::Channel::new(p.DMA_CH0, Irqs),
+    );
     static STATE: StaticCell<cyw43::State> = StaticCell::new();
     let state = STATE.init(cyw43::State::new());
     let (_net_device, mut control, runner) = cyw43::new(state, pwr, spi, fw, nvram).await;
