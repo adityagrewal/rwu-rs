@@ -39,6 +39,10 @@ async fn cyw43_task(
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
+    let p = embassy_rp::init(Default::default());
+    let fw = aligned_bytes!("../../cyw43-firmware/43439A0.bin");
+    let clm = aligned_bytes!("../../cyw43-firmware/43439A0_clm.bin");
+    let nvram = aligned_bytes!("../../cyw43-firmware/nvram_rp2040.bin");
     static STATE: StaticCell<cyw43::State> = StaticCell::new();
     let state = STATE.init(cyw43::State::new());
     let (_net_device, mut control, runner) = cyw43::new(state, pwr, spi, fw, nvram).await;
