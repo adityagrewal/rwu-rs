@@ -15,3 +15,7 @@ defmt-rtt        = "1.0.0"
 panic-probe      = { version = "1.0.0", features = ["print-defmt"] }
 cyw43            = { version = "0.7.0", features = ["defmt", "firmware-logs"] }
 cyw43-pio        = { version = "0.10.0", features = ["defmt"] }
+[package.metadata.embassy]
+build = [
+  { target = "thumbv8m.main-none-eabihf", artifact-dir = "out/examples/rp235x" }
+]
