@@ -57,6 +57,7 @@ async fn main(spawner: Spawner) {
     p.PIN_29,
     dma::Channel::new(p.DMA_CH0, Irqs),
     );
+
     static STATE: StaticCell<cyw43::State> = StaticCell::new();
     let state = STATE.init(cyw43::State::new());
     let (_net_device, mut control, runner) = cyw43::new(state, pwr, spi, fw, nvram).await;
