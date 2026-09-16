@@ -12,3 +12,10 @@ async fn main(_spawner: Spawner) {
     let mut led = Output::new(p.PIN_15, Level::Low);
     let mut button = Input::new(p.PIN_16, Pull::Up);
 
+    loop {
+        button.wait_for_any_edge().await;
+        Timer::after_millis(20).await; // settle before sampling
+        // button is active low: pressed pulls the pin down
+        led.set_level(if button.is_low() { Level::High } else { Level::Low });
+    }
+}
