@@ -17,6 +17,7 @@ bind_interrupts!(struct Irqs {
 async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
     let mut adc = Adc::new(p.ADC, Irqs, Config::default());
+
     let mut p26 = Channel::new_pin(p.PIN_26, Pull::None);
     let mut p27 = Channel::new_pin(p.PIN_27, Pull::None);
     let mut p28 = Channel::new_pin(p.PIN_28, Pull::None);
