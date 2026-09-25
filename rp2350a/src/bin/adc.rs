@@ -29,3 +29,7 @@ async fn main(_spawner: Spawner) {
         let level = adc.read(&mut p27).await.unwrap();
         info!("Pin 27 ADC: {}", level);
         let level = adc.read(&mut p28).await.unwrap();
+        info!("Pin 28 ADC: {}", level);
+        let temp = adc.read(&mut ts).await.unwrap();
+        info!("Temp: {} degrees", convert_to_celsius(temp));
+        Timer::after_secs(1).await;
