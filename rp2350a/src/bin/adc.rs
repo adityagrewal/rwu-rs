@@ -33,6 +33,9 @@ async fn main(_spawner: Spawner) {
         let temp = adc.read(&mut ts).await.unwrap();
         info!("Temp: {} degrees", convert_to_celsius(temp));
         Timer::after_secs(1).await;
+    }
+}
+
 fn convert_to_celsius(raw_temp: u16) -> f32 {
     let temp = 27.0 - (raw_temp as f32 * 3.3 / 4096.0 - 0.706) / 0.001721;
     let sign = if temp < 0.0 { -1.0 } else { 1.0 };
