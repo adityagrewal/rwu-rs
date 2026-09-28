@@ -37,3 +37,24 @@ async fn pwm_set_dutycycle(slice2: Peri<'static, PWM_SLICE2>, pin4: Peri<'static
     let clock_freq_hz = embassy_rp::clocks::clk_sys_freq();
     let divider = 16u8;
     let period = (clock_freq_hz / (desired_freq_hz * divider as u32)) as u16 - 1;
+
+    let mut c = Config::default();
+    c.top = period;
+    c.divider = divider.into();
+
+    let mut pwm = Pwm::new_output_a(slice2, pin4, c.clone());
+
+    loop {
+        pwm.set_duty_cycle_fully_on().unwrap();
+        Timer::after_secs(1).await;
+
+        pwm.set_duty_cycle_percent(66).unwrap();
+        Timer::after_secs(1).await;
+
+        pwm.set_duty_cycle(c.top / 4).unwrap();
+        Timer::after_secs(1).await;
+
+        pwm.set_duty_cycle_fully_off().unwrap();
+        Timer::after_secs(1).await;
+    }
+}
