@@ -22,3 +22,11 @@ async fn pwm_set_config(slice7: Peri<'static, PWM_SLICE7>, pin15: Peri<'static, 
     c.top = 32_768;
     c.compare_b = 8;
     let mut pwm = Pwm::new_output_b(slice7, pin15, c.clone());
+
+    loop {
+        info!("current LED duty cycle: {}/32768", c.compare_b);
+        Timer::after_secs(1).await;
+        c.compare_b = c.compare_b.rotate_left(4);
+        pwm.set_config(&c);
+    }
+}
