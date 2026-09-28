@@ -30,3 +30,10 @@ async fn pwm_set_config(slice7: Peri<'static, PWM_SLICE7>, pin15: Peri<'static, 
         pwm.set_config(&c);
     }
 }
+
+#[embassy_executor::task]
+async fn pwm_set_dutycycle(slice2: Peri<'static, PWM_SLICE2>, pin4: Peri<'static, PIN_4>) {
+    let desired_freq_hz = 25_000;
+    let clock_freq_hz = embassy_rp::clocks::clk_sys_freq();
+    let divider = 16u8;
+    let period = (clock_freq_hz / (desired_freq_hz * divider as u32)) as u16 - 1;
