@@ -15,3 +15,10 @@ async fn main(spawner: Spawner) {
     spawner.spawn(pwm_set_config(p.PWM_SLICE7, p.PIN_15).unwrap());
     spawner.spawn(pwm_set_dutycycle(p.PWM_SLICE2, p.PIN_4).unwrap());
 }
+
+#[embassy_executor::task]
+async fn pwm_set_config(slice7: Peri<'static, PWM_SLICE7>, pin15: Peri<'static, PIN_15>) {
+    let mut c = Config::default();
+    c.top = 32_768;
+    c.compare_b = 8;
+    let mut pwm = Pwm::new_output_b(slice7, pin15, c.clone());
