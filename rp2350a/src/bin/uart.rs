@@ -19,3 +19,5 @@ async fn main(_spawner: Spawner) {
     let mut uart = Uart::new(
         p.UART0, p.PIN_0, p.PIN_1, Irqs, p.DMA_CH0, p.DMA_CH1, Config::default(),
     );
+
+    uart.write(b"Hello World!\r\n").await.unwrap();
