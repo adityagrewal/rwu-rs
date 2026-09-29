@@ -12,3 +12,10 @@ bind_interrupts!(struct Irqs {
     UART0_IRQ => InterruptHandler<UART0>;
     DMA_IRQ_0 => dma::InterruptHandler<DMA_CH0>, dma::InterruptHandler<DMA_CH1>;
 });
+
+#[embassy_executor::main]
+async fn main(_spawner: Spawner) {
+    let p = embassy_rp::init(Default::default());
+    let mut uart = Uart::new(
+        p.UART0, p.PIN_0, p.PIN_1, Irqs, p.DMA_CH0, p.DMA_CH1, Config::default(),
+    );
