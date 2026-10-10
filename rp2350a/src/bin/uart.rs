@@ -21,3 +21,10 @@ async fn main(_spawner: Spawner) {
     );
 
     uart.write(b"Hello World!\r\n").await.unwrap();
+
+    let mut buf = [0u8; 1];
+    loop {
+        uart.read(&mut buf).await.unwrap();
+        uart.write(&buf).await.unwrap();
+    }
+}
