@@ -1,0 +1,12 @@
+[package]
+name = "lpc845-brk-rev-A"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lpc8xx-hal = { version = "0.10", features = ["845-rt"] }
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+panic-halt = "0.2"
+nb = "1"
+embedded-hal = "0.2"        # lpc8xx-hal implements the 0.2 generation of embedded-hal traits
